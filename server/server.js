@@ -6,7 +6,7 @@
 
 const path = require('path');
 const express = require('express');
-
+const fs = require('fs');
 const publicPath = path.join(__dirname, '../public');
 //console.log(publicPath);//result: D:\Beyond\nodejs\project\udemy\node-chat-app\public
 const app = express();
