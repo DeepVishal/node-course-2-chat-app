@@ -20,22 +20,12 @@ let io = socketIO(server);
 io.on('connection', (socket) => {
     console.log("New user connected");
 
-    socket.emit('newEmail', {
-        from: "abc.example.com",
-        text: "Hello From Server",
-        createdAt: 123
-    });
-    socket.on('createEmail', (createEmail) => {
-        console.log("created email from client: ", createEmail);
-    });
-
-    socket.emit('newMessage', {
-        from: "Someone",
-        text: "This is a new msg from server :)",
-        createdAt:123
-    });
     socket.on('createMessage', (createdMessage) => {
-        console.log("Message received from client ", createdMessage)
+        io.emit('newMessage', {
+            from: createdMessage.from,
+            text: createdMessage.text,
+            createdAt: new Date().getTime()
+        });
     })
 
     socket.on('disconnect', () => {
