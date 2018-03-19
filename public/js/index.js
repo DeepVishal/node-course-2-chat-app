@@ -8,3 +8,9 @@ socket.on('disconnect', function () {
 socket.on('newMessage', function (newMessage) {
     console.log(newMessage);
 })
+socket.on('welcomeMessage', (welcomeMessage) => {
+    console.log(welcomeMessage);
+});
+socket.on('newMember', (newMember) => {
+    console.log(newMember);
+})
