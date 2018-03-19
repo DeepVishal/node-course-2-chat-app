@@ -24,13 +24,14 @@ io.on('connection', (socket) => {
 
     socket.broadcast.emit('newMessage', generateMessage("Admin", "New user joined"));
 
-    socket.on('createMessage', (createdMessage) => {
+    socket.on('createMessage', (createdMessage,callback) => {
         io.emit('newMessage', generateMessage(createdMessage.from, createdMessage.text));
         // socket.broadcast.emit('newMessage', {
         //     from: createdMessage.from,
         //     text: createdMessage.text,
         //     createdAt: new Date().getTime()
         // });
+        callback('This message is from server');
     })
 
     socket.on('disconnect', () => {
